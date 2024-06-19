@@ -12,7 +12,7 @@ This repository aims at creating models for Latex projects for different types o
 To compile, you can use the run.bat file on Windows. Here is an example:
 
 ```cmd
-.\run.bat .\Article
+.\run.bat .\Templates\Article
 ```
 
 This repository can be the root folder of your Latex projects and you can create private repositories inside this one to use only one .sty and one .bat file for all your projects. Be careful not to push YourProject/build/.
