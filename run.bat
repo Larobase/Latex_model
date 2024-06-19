@@ -33,21 +33,24 @@ if %ERRORLEVEL% neq 0 (
 :: Extract the name of the parent folder from the path provided in the argument
 for %%i in (".\.") do set "PARENT_FOLDER=%%~nxi"
 
-:: Delete every PDF file in the current directory
-del /Q *.pdf
+:: Rename PDF
+rename ".\build\%FILENAME%.pdf" "%PARENT_FOLDER%.pdf"
+if %ERRORLEVEL% neq 0 (
+    echo Failed to rename PDF file.
+    exit /b %ERRORLEVEL%
+)
 
-:: Move the PDF back to the specified folder and rename it to the parent folder's name
-move /Y "build\%FILENAME%.pdf" ".\"
+:: Check if a file with the same name already exists in output folder and deleting it so
+if exist "..\pdf_output\%PARENT_FOLDER%.pdf" del /Q "..\pdf_output\%PARENT_FOLDER%.pdf"
+
+:: Move the PDF to the output folder
+move /Y "build\%PARENT_FOLDER%.pdf" "..\pdf_output\"
 if %ERRORLEVEL% neq 0 (
     echo Failed to move PDF file.
     exit /b %ERRORLEVEL%
 )
 
-rename "%FILENAME%.pdf" "%PARENT_FOLDER%.pdf"
-if %ERRORLEVEL% neq 0 (
-    echo Failed to rename PDF file.
-    exit /b %ERRORLEVEL%
-)
+
 
 :: Return to the original directory at the end
 cd /d "%ORIGINAL_DIR%"
