@@ -1,5 +1,7 @@
 # Latex_model
 
+[See video on how to install Latex](https://www.youtube.com/watch?v=4lyHIQl4VM8)
+
 This repository aims at creating models for Latex projects for different types of files.
 
 - It produces a pdf file from the main.text file in the folder you select.
