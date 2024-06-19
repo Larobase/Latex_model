@@ -6,8 +6,8 @@ This repository aims at creating models for Latex projects for different types o
 
 - It produces a pdf file from the main.text file in the folder you select.
 - Please name the main text file of your project as "main.tex".
-- This file uses MyStyleSheet.sty to import packages and custom functions, then it takes images from the image folder and pages from the text folder.
-- The resulting pdf will be name after the parent directory's name and placed in the same folder as main.tex.
+- These files use MyStyleSheet.sty to import packages and custom functions, then they take images from their image folder and pages from their text folder.
+- The resulting pdf will be named after the parent directory's name and placed in .\Templates.\pdf_output\
 
 To compile, you can use the run.bat file on Windows. Here is an example:
 
@@ -15,7 +15,7 @@ To compile, you can use the run.bat file on Windows. Here is an example:
 .\run.bat .\Templates\Article
 ```
 
-This repository can be the root folder of your Latex projects and you can create private repositories inside this one to use only one .sty and one .bat file for all your projects. Be careful not to push YourProject/build/.
+This repository can be the root folder of your Latex projects and you can create a private repository inside this one to use only one .sty and one .bat file for all your projects.
 
 ## Syntax tips
 
