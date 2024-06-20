@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal enabledelayedexpansion
 
 :: Check if folder path was provided
 if "%~1"=="" (
@@ -12,6 +12,19 @@ set "ORIGINAL_DIR=%CD%"
 
 :: Set the folder path from the argument
 set "FOLDER_PATH=%~1"
+
+
+:: Initialize a counter
+set "counter=0"
+
+:: Extract the first folder name from FOLDER_PATH
+set "FIRST_FOLDER="
+for %%i in (%FOLDER_PATH:\= %) do (
+    set /a counter+=1
+    if !counter! EQU 2 (
+        set "FIRST_FOLDER=%%i"
+    )
+)
 
 :: Change directory to the specified folder path
 cd /d "%FOLDER_PATH%"
@@ -40,11 +53,21 @@ if %ERRORLEVEL% neq 0 (
     exit /b %ERRORLEVEL%
 )
 
-:: Check if a file with the same name already exists in output folder and deleting it so
-if exist "..\pdf_output\%PARENT_FOLDER%.pdf" del /Q "..\pdf_output\%PARENT_FOLDER%.pdf"
+:: Save the current directory
+set "OUTPUT_PDF_DIR=%ORIGINAL_DIR%\pdf_output\%FIRST_FOLDER%"
+set "OUTPUT_PDF_FILE=%OUTPUT_PDF_DIR%\%PARENT_FOLDER%"
+
+
+:: Check if the output folder exists, create it if it doesn't
+if not exist "%OUTPUT_PDF_DIR%" (
+    mkdir "%OUTPUT_PDF_DIR%"
+) else (
+    :: Check if a file with the same name already exists in output folder and deleting it so
+    if exist "%OUTPUT_PDF_FILE%.pdf" del /Q "%OUTPUT_PDF_FILE%.pdf"
+)
 
 :: Move the PDF to the output folder
-move /Y "build\%PARENT_FOLDER%.pdf" "..\pdf_output\"
+move /Y "build\%PARENT_FOLDER%.pdf" "%OUTPUT_PDF_DIR%"
 if %ERRORLEVEL% neq 0 (
     echo Failed to move PDF file.
     exit /b %ERRORLEVEL%

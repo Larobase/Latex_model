@@ -12,16 +12,30 @@
 \usepackage{hyperref}
 \usepackage[nonumberlist]{glossaries}
 \usepackage{cleveref}
+\usepackage{ulem}
 
 
 %================================commands to change template==========
 \geometry{margin=1in} % Adjust margins as needed
+\hypersetup{
+    colorlinks = true, % Enables colored links
+    linkcolor = black, % Color of internal links
+    urlcolor = blue, % Color of external URLs
+    pdfborder = {0 0 0}, % Removes the border around links
+    pdfborderstyle={/S/U/W 1}, % Underlines links instead of border
+}
 
 
 %=========================new commands================================
 \newcommand{\seemore}[1]{
     \bigskip
     \href{#1}{See more here: #1}
+    \bigskip
+}
+
+\newcommand{\seemoreLabel}[1]{
+    \bigskip
+    \hyperref[ref:#1]{ See more here: #1}
     \bigskip
 }
 

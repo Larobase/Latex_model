@@ -15,13 +15,15 @@ To compile, you can use the run.bat file on Windows. Here is an example:
 .\run.bat .\Templates\Article
 ```
 
-and the output will be placed in .\Templates\pdf_output
+and the output will be placed in .\pdf_output\Templates
 
-**Note:** if you run _.\run.bat .\Templates\Article\AnotherFolder_, the output will be in .\Templates\Article\pdf_output
+**Note:** If you create a folder My_Latex_projects in the root of this repository, the pdf outputs will be stored in .\pdf_output\My_Latex_projects
 
 This repository can be the root folder of your Latex projects and you can create a private repository inside this one to use only one .sty and one .bat file for all your projects.
 
 ## Syntax tips
+
+If you have a Test project inside another project for example, be careful to change the path to MyStyleSheet.sty so that it will compile correctly (in this case, add ../ to the path)
 
 Latex doesn't like hyphens so name your images with underscores instead of hyphens and use {-} to display a hyphen inside your document. This will prevent the warning to be displayed.  
 In the same way, use {} at the end of a command with no parameter to have no warning.
