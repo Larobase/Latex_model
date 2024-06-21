@@ -26,8 +26,13 @@ for %%i in (%FOLDER_PATH:\= %) do (
     )
 )
 
+:: copy the style file to the folder
+copy "MyStyleSheet.sty" "%FOLDER_PATH%"
+
+
 :: Change directory to the specified folder path
 cd /d "%FOLDER_PATH%"
+
 
 :: Set the name of your LaTeX file without the extension
 set FILENAME=main
@@ -35,7 +40,10 @@ set FILENAME=main
 :: Compile the LaTeX document, outputting files to the build directory within the current folder
 pdflatex -output-directory="build" "%FILENAME%.tex"
 
+cd /d "build"
 bibtex %FILENAME%
+cd /d ".."
+
 makeglossaries -d build %FILENAME%
 
 pdflatex -output-directory="build" "%FILENAME%.tex"
@@ -77,6 +85,8 @@ if %ERRORLEVEL% neq 0 (
     exit /b %ERRORLEVEL%
 )
 
+:: delete the style file in the folder to keep a general one
+del "MyStyleSheet.sty"
 
 
 :: Return to the original directory at the end
