@@ -34,7 +34,11 @@ set FILENAME=main
 
 :: Compile the LaTeX document, outputting files to the build directory within the current folder
 pdflatex -output-directory="build" "%FILENAME%.tex"
-makeglossaries -d build main
+
+bibtex %FILENAME%
+makeglossaries -d build %FILENAME%
+
+pdflatex -output-directory="build" "%FILENAME%.tex"
 pdflatex -output-directory="build" "%FILENAME%.tex"
 
 :: Check if pdflatex succeeded
