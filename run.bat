@@ -41,13 +41,14 @@ set FILENAME=main
 pdflatex -output-directory="build" "%FILENAME%.tex"
 
 cd /d "build"
-bibtex %FILENAME%
+biber %FILENAME%
 cd /d ".."
 
 makeglossaries -d build %FILENAME%
 
 pdflatex -output-directory="build" "%FILENAME%.tex"
 pdflatex -output-directory="build" "%FILENAME%.tex"
+
 
 :: Check if pdflatex succeeded
 if %ERRORLEVEL% neq 0 (

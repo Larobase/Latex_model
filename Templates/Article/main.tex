@@ -1,9 +1,11 @@
 %==========================================Starting document=======================================
 \documentclass{article}         % or report, book, etc
-\usepackage{../../MyStyleSheet}
+\usepackage{MyStyleSheet}       % When compiling, we create a temp copy of MyStyleSheet.sty in this folder so you don't have to worry about the path
 
 \makeglossaries{}               % Generate the glossary
-\include{text/Glossary.tex}     % Include the glossary content (see text/Glossary.tex for more details)
+
+\bibliography{../References.bib} % because we run bibtex in build folder but it has to access Bibliography.bib
+
 
 \title{This is the title of an article}
 \author{This is the author}
@@ -11,6 +13,8 @@
 
 %==========================================Document================================================
 \begin{document}
+
+\include{text/Glossary.tex}     % Include the glossary content (see text/Glossary.tex for more details)
 
 \maketitle
 
@@ -28,7 +32,9 @@
 \printglossaries{}
 \addcontentsline{toc}{section}{Glossary} % Adds the Glossary to the ToC
 
-\include{text/References}
+\printbibliography{}
+\addcontentsline{toc}{section}{References} % Adds the Glossary to the ToC
+\clearpage
 
 
 \end{document}
