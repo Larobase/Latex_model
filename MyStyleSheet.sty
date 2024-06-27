@@ -39,6 +39,9 @@
 \definecolor{green_swot}{HTML}{5BC471} 
 \definecolor{blue_swot}{HTML}{4A87CF} 
 
+% Adjust the spacing between bibliography entries
+\setlength{\bibitemsep}{1.5em} % Adjust '1.5em' to your desired spacing
+
 
 
 %=========================new commands================================
@@ -59,11 +62,11 @@
     \bigskip
 }
 
-\newcommand{\image}[3]{
+\newcommand{\image}[4]{
     \begin{figure}[ht]
         #2
         #1
         \caption{#3}
-        \label{fig:#3}
+        \label{fig:#4}
     \end{figure}
 }
