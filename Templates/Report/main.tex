@@ -1,0 +1,48 @@
+%==========================================Starting document=======================================
+\documentclass{report}          % or report, book, etc
+\usepackage{MyStyleSheet}       % When compiling, we create a temp copy of MyStyleSheet.sty in this folder so you don't have to worry about the path
+
+\makeglossaries{}                 % Generate the glossary
+\include{text/Glossary}
+
+\dominitoc{}                      % Generate mini tables of contents
+
+
+\bibliography{../Bibliography.bib}
+
+
+
+\title{This is the main title of the report}
+\author{John Doe}
+\date{\today}
+
+%==========================================Document================================================
+\begin{document}
+
+\include{text/0_cover_page}
+
+\begin{abstract}
+
+    \lipsum[1]{}
+
+\end{abstract}
+
+\setcounter{page}{3}
+
+\tableofcontents
+\listoffigures
+\clearpage
+
+\include{text/1_introduction}
+\include{text/x_}
+\include{text/_conclusion}
+
+\printglossaries{}
+\addcontentsline{toc}{chapter}{Glossary} % Adds the Glossary to the ToC
+\clearpage
+
+\printbibliography{}
+\addcontentsline{toc}{chapter}{Bibliography} % Adds the Glossary to the ToC
+\clearpage
+
+\end{document}

@@ -94,3 +94,5 @@ del "MyStyleSheet.sty"
 cd /d "%ORIGINAL_DIR%"
 
 echo Compilation and extraction succeeded.
+
+start "" "%OUTPUT_PDF_FILE%.pdf"

@@ -1,0 +1,46 @@
+\documentclass[11pt,a4paper,roman]{moderncv}      
+\usepackage[english]{babel}
+\usepackage{ragged2e}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum} % dummy texts package
+
+
+\moderncvstyle{classic}                            
+\moderncvcolor{green} % Bullet point color                          
+
+% Page margins
+\usepackage[scale=0.8]{geometry} % Page margins
+
+% Your Information, please revise
+\name{firstname}{lastname}
+\address{address}{Town, county}{Post code}
+\phone[mobile]{+12 345678910}                   
+\email{john.doe@ouiouibaguette.bg}             
+                   
+
+\begin{document}
+
+\hypersetup{pdftitle={Cover\_letter}}
+
+
+\begin{minipage}[t]{\textwidth}
+\includegraphics[height=0.11\textwidth]{images/logo.png}
+\end{minipage}
+
+
+\recipient{Dear XXXX,}{}
+\opening{\vspace*{-2em}}
+\closing{Yours sincerely,}{\vspace*{-2em}}  
+\makelettertitle{}
+\justifying{}
+
+%%% your own words here 
+
+\lipsum[1-4]
+%%% end
+
+\makeletterclosing{}
+
+\end{document}
